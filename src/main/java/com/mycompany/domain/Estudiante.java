@@ -37,4 +37,9 @@ public class Estudiante {
         this.correoElectronico = correoElectronico;
     }
     
+    @Override
+    public String toString() {
+        return "Estudiante: " + "nombre = " + nombre + ", legajo = " + legajo + ", correoElectronico = " + correoElectronico + "\n";
+    }
+    
 }

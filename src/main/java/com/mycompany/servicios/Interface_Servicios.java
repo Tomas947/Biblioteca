@@ -13,17 +13,25 @@ public interface Interface_Servicios {
     void añadirLibro(String titulo, String autor, String categoria);
     
     void añadirEstudiante(String nombre, String legajo, String correoElectronico);
-      
+
     void sacarPrestamo(String titulo, int duracion);
-    
+
+    void sacarPrestamo();
+  
     List<Libro> listarLibrosPrestadosA_Usuarios();
     
     List<Libro> listarLibros();
-    
+
+    List<Estudiante> listarEstudiantes();
+ 
     void buscarLibro(String titulo);
     
     boolean existe(Libro libro,String titulo);
     
     void prestar(String titulo,int tiempo,boolean prestamo);
+
+    boolean existeUsuario(String nombre, String legajo, String correo);
     
+    void iniciarSesion();
+
 }

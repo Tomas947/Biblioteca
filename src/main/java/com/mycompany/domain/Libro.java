@@ -6,6 +6,8 @@ public class Libro {
     private String titulo;
     private String autor;
     private String categoria;
+    private String prestadoA;
+
     private int tiempo;
     private boolean disponible;
 
@@ -55,16 +57,19 @@ public class Libro {
     public void setTiempo(int tiempo) {
         this.tiempo = tiempo;
     }
+
+
+    public String getPrestadoA() {
+        return prestadoA;
+    }
+
+    public void setPrestadoA(String prestadoA) {
+        this.prestadoA = prestadoA;
+    }
     
     @Override
     public String toString() {
         return "\nLibro: " + "titulo = " + titulo + ", autor = " + autor + ", categoria = " + categoria + ", disponible = " + disponible + "\n";
-    }
-    
-    
 
-    
-    
-     
-    
-}
+    }  
+}   
