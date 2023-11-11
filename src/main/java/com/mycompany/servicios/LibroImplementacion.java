@@ -10,74 +10,31 @@ public class LibroImplementacion implements Interface_Servicios {
 
     @Override
     public void añadirLibro(String titulo, String autor, String categoria) {
-        Libro libro = new Libro(titulo, autor, categoria);
+
+        Libro libro = new Libro(titulo, autor, categoria);//Inicializamos los atributos del libro
         libros.add(libro);
         System.out.println("Libro añadido con exito.\n");
     }
 
     @Override
     public void añadirEstudiante(String nombre, String legajo, String correoElectronico) {
-               
-        Estudiante estudiante = new Estudiante(nombre, legajo, correoElectronico);
+
+        Estudiante estudiante = new Estudiante(nombre, legajo, correoElectronico);//Inicializamos los atributos del usuario(Estudiante)
         ListaDeEstudiantes.add(estudiante);//añadimos un nuevo estudiante(usuario)
         System.out.println("El estudiante de añadio correctamente.\n");
 
-    }
-
-    @Override
-    public void sacarPrestamo(String titulo, int duracion) {
-
-        int tiempo = 0;
-        String titulos, autor, categoria;
-        int v1 = 0;
-        System.out.println("Ingrese el titulo del libro:");
-        titulo = in.nextLine();
-
-        do {
-            System.out.println("Tiempo maximo 15 dias.");
-            System.out.println("Ingrese cuanto tiempo desea retirarlo(en dias): ");
-            tiempo = in.nextInt();
-
-            if (tiempo > 15) {
-                System.out.println("Pretamo cancelado, tiempo de prestamo exesivo, intentelo de nuevo.");
-
-            } else {
-                v1 = 1;
-            }
-
-        } while (v1 == 0);// ponemos esto asi ppor que si el usuario ingresa mas de 15 dias se le negara el prestamos y se seguira el bucle
-
-        try {
-
-            for (Libro objeto : libros) {
-                Libro aux = objeto;   //creamos un objeto aux para poder acceder a los datos del objeto que les estamos asignando                             
-                if (aux.getTitulo().equalsIgnoreCase(titulo) && aux.isDisponible() == true) {
-                    //la codicioen para prestar un libro es que el libro exista y ademas q este disponible
-                    prestar(titulo, tiempo, false);//con esto hacemos para que otro usuario no pueda pedir el mismo libro
-                    //a su vez decimos que todo livro prestado tiene el atributo disponible == false
-                    //esto nos va a facilitar a la hora listar los libros prestados.
-                    break;
-                } else if (aux.isDisponible() == false) {
-                    System.out.println("\nEl libro ingresado no se encuentra disponible.");
-                } else {
-                    System.out.println("El libro solicitado ya se registro prestado, disfrute su leectura.");
-                }
-            }
-        } catch (Exception ex) {
-            //ex.printStackTrace();
-            System.out.println("ERROR. al solicitar prestamo.");
-
-        }
     }
 
     public void sacarPrestamo() {
         int tiempo = 0;
         String titulo, autor, categoria;
         int v1 = 0;
-        System.out.println("Ingrese el titulo del libro:");
+
+        System.out.print("Ingrese el titulo del libro:");
         titulo = in.nextLine();
 
         do {
+
             System.out.println("Tiempo maximo 15 dias.");
             System.out.println("Ingrese cuanto tiempo desea retirarlo(en dias): ");
             tiempo = in.nextInt();
@@ -91,13 +48,15 @@ public class LibroImplementacion implements Interface_Servicios {
 
         try {
 
-            for (Libro objeto : libros) {
+            for (Libro objeto : libros) {//
                 Libro aux = objeto;   //creamos un objeto aux para poder acceder a los datos del objeto que les estamos asignando                             
                 if (aux.getTitulo().equalsIgnoreCase(titulo) && aux.isDisponible() == true) {
                     //la codicioen para prestar un libro es que el libro exista y ademas q este disponible
-                    prestar(titulo, tiempo, false);//con esto hacemos para que otro usuario no pueda pedir el mismo libro
+                    //con esto hacemos para que otro usuario no pueda pedir el mismo libro
+                    prestar(titulo, tiempo, false);
                     //a su vez decimos que todo livro prestado tiene el atributo disponible == false
                     //esto nos va a facilitar a la hora listar los libros prestados.
+                    System.out.println("El libro se le presto con exito.\n");
                     break;
                 } else if (aux.isDisponible() == false) {
                     System.out.println("\nEl libro ingresado no se encuentra disponible.");
@@ -105,6 +64,7 @@ public class LibroImplementacion implements Interface_Servicios {
                     System.out.println("El libro solicitado ya se registro prestado, disfrute su leectura.");
                 }
             }
+
         } catch (Exception ex) {
             //ex.printStackTrace();
             System.out.println("ERROR. al solicitar prestamo.");
@@ -116,7 +76,7 @@ public class LibroImplementacion implements Interface_Servicios {
     public List<Libro> listarLibros() {
 
         for (Libro elemts : libros) {
-            System.out.print(elemts);
+            System.out.print(elemts);//cout
 
         }
         System.out.println(" ");
@@ -144,19 +104,15 @@ public class LibroImplementacion implements Interface_Servicios {
 
             }
 
-    }
-
-    
-        else {
+        } else {
             System.out.println("No hay libros.");
-    }
+        }
 
-
-return null;
+        return null;
     }
 
     @Override
-public void buscarLibro(String titulo) {
+    public void buscarLibro(String titulo) {
 
         boolean encontrado = false;
 
@@ -174,19 +130,6 @@ public void buscarLibro(String titulo) {
                     System.out.println(" Disponivilidad:  No esta Disponible. \n");
                 }
 
-                System.out.println("______________");
-                System.out.println("\n |Libro encontrado: \n");
-                System.out.println(" |Titulo: " + libro1.getTitulo());
-                System.out.println(" |Autor: " + libro1.getAutor());
-                System.out.println(" |Categoria: " + libro1.getCategoria());
-
-                if (libro1.isDisponible() == true) {
-                    System.out.println(" |Disponivilidad:  Esta Disponible. \n");
-                } else {
-                    System.out.println(" |Disponivilidad:  No esta Disponible. \n");
-                }
-                System.out.println("_____________");
-                break;
             }
         }
 
@@ -197,7 +140,7 @@ public void buscarLibro(String titulo) {
     }
 
     @Override
-public boolean existe(Libro libro, String titulo) {
+    public boolean existe(Libro libro, String titulo) {
 
         //el "equalsIgnoreCase" sirve para comparar pero ignoranddo las mayusculas o minusculas
         if (libro.getTitulo().equalsIgnoreCase(titulo)) {//verificamos de que esxista el libro mediante su nombre
@@ -208,28 +151,25 @@ public boolean existe(Libro libro, String titulo) {
     }
 
     @Override
-public void prestar(String titulo,int tiempo, boolean prestamo) {//esta cosa no sirve borrala                                                                                                           
+    public void prestar(String titulo, int tiempo, boolean prestamo) {//esta cosa no sirve borrala 
+
         for (Libro libro : libros) {
             if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+
                 libro.setDisponible(prestamo);
                 libro.setTiempo(tiempo);
                 break;
             }
         }
 
-}
-
-
-        
-
-    
+    }
 
     @Override
-public void iniciarSesion() {
+    public void iniciarSesion() {
         String usuarioActual, legajo, correoelectronico;
         boolean existe = false;
-        
-        do {
+
+        while (existe == false){
             System.out.println("Ingrese el nombre:");
             usuarioActual = in.nextLine();
             System.out.println("Ingrese el legajo:");
@@ -242,18 +182,18 @@ public void iniciarSesion() {
 
             if (existe == true) {
                 System.out.println("\nLa sesion se inicio correctamentamente.");
-                
+
             } else {
                 System.out.println("\nNo se pudo iniciar sesion correctamente intente de nuevo");
             }
-        } while (existe == false);
+        }
     }
-    
+
     @Override
-public boolean existeUsuario(String nombre, String legajo, String correoElectronico) {
+    public boolean existeUsuario(String nombre, String legajo, String correoElectronico) {
         boolean existe = false;
         for (Estudiante user : ListaDeEstudiantes) {//el if verifica que el name, legajo y mail sean correctos
-            if (user.getNombre().equalsIgnoreCase(nombre) && user.getLegajo().equalsIgnoreCase(legajo) && user.getCorreoElectronico().equalsIgnoreCase(correoElectronico)){
+            if (user.getNombre().equalsIgnoreCase(nombre) && user.getLegajo().equalsIgnoreCase(legajo) && user.getCorreoElectronico().equalsIgnoreCase(correoElectronico)) {
                 existe = true;
                 return existe;
             }
@@ -263,7 +203,7 @@ public boolean existeUsuario(String nombre, String legajo, String correoElectron
     }
 
     @Override
-public List<Estudiante> listarEstudiantes() {
+    public List<Estudiante> listarEstudiantes() {
         for (Estudiante user : ListaDeEstudiantes) {
             System.out.println(user + "");
         }

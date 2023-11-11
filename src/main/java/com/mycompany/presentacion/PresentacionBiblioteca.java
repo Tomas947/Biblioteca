@@ -3,14 +3,14 @@ package com.mycompany.presentacion;
 import com.mycompany.servicios.Interface_Servicios;
 import com.mycompany.servicios.LibroImplementacion;
 import com.mycompany.domain.Estudiante;
-
 import java.util.Scanner;
 
 public class PresentacionBiblioteca {
 
     public static void main(String[] args) {
 
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);//cin>>
+        
         int opcion = -1, cont = 0;
         int tiempo = 0;
         String titulo, autor, categoria, nombre = "", usuarioActual = "Juan", legajo = "181245", correoElectronico = "juan@gmail.com";
@@ -20,6 +20,7 @@ public class PresentacionBiblioteca {
         biblioteca.añadirEstudiante(usuarioActual, legajo, correoElectronico);
 
         do {
+            
             if ((biblioteca.existeUsuario(usuarioActual, legajo, correoElectronico)) == true) {
                 if (cont == 0) {
                     System.out.println("Se inicio sesion correctamente\n");
@@ -40,7 +41,7 @@ public class PresentacionBiblioteca {
                     + "8. Iniciar sesion con otra cuenta.\n"
                     + "0. Salir.");
 
-            System.out.println("Elija una opcion: ");
+            System.out.print("Elija una opcion: ");
             opcion = Integer.parseInt(in.nextLine());// lo hicimos asi si por que se bugea si lo hago de la
             int opcion2 = (int) opcion;                // manera clasica osea solo con "opcion = in.nextInt();"
 
@@ -81,7 +82,7 @@ public class PresentacionBiblioteca {
                     String nom = in.nextLine();
                     System.out.print("Ingrese su legajo.");
                     String legaj = in.nextLine();
-                    System.out.println("Ingrese su correo electronico.");
+                    System.out.print("Ingrese su correo electronico.");
                     String correo = in.nextLine();
 
                     biblioteca.añadirEstudiante(nom, legaj, correo);

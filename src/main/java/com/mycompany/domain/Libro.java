@@ -7,9 +7,8 @@ public class Libro {
     private String autor;
     private String categoria;
     private String prestadoA;
-
     private int tiempo;
-    private boolean disponible;
+    private boolean disponible;// true o false titulo = "asd"
 
     public Libro(String titulo, String autor, String categoria) {
         this.titulo = titulo;

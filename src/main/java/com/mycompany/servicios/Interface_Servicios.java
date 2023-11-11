@@ -5,7 +5,7 @@ import com.mycompany.domain.Libro;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface Interface_Servicios {
+public interface Interface_Servicios {//[][][][][]                          float variable = []
     
     List<Libro> libros = new ArrayList<>();
     List<Estudiante> ListaDeEstudiantes = new ArrayList<>();
@@ -14,7 +14,6 @@ public interface Interface_Servicios {
     
     void añadirEstudiante(String nombre, String legajo, String correoElectronico);
 
-    void sacarPrestamo(String titulo, int duracion);
 
     void sacarPrestamo();
   
