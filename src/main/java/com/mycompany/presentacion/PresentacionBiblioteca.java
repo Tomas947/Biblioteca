@@ -1,7 +1,7 @@
 package com.mycompany.presentacion;
 
-import com.mycompany.servicios.Interface_Servicios;
-import com.mycompany.servicios.LibroImplementacion;
+import com.mycompany.datos.Interface_Servicios;
+import com.mycompany.datos.LibroImplementacion;
 import com.mycompany.domain.Estudiante;
 import java.util.Scanner;
 
