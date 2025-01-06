@@ -11,7 +11,7 @@ public class PresentacionBiblioteca {
 
         Scanner in = new Scanner(System.in);//cin>>
         
-        int opcion = -1, cont = 0;
+        int opcion = -1, conto = 0;
         int tiempo = 0;
         String titulo, autor, categoria, nombre = "", usuarioActual = "Juan", legajo = "181245", correoElectronico = "juan@gmail.com";
         boolean bandera = true;
@@ -22,10 +22,11 @@ public class PresentacionBiblioteca {
         do {
             
             if ((biblioteca.existeUsuario(usuarioActual, legajo, correoElectronico)) == true) {
-                if (cont == 0) {
+                if (conto == 0) {
                     System.out.println("Se inicio sesion correctamente\n");
-                    cont = 1;
+                    conto = 1;
                 }
+                
             } else {
                 break;
             }
